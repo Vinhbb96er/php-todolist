@@ -1,6 +1,6 @@
 <?php
 
-require_once(constant('ROOT_PATH') . '/commons/database.php');
+require_once('commons/database.php');
 
 class Work
 {
@@ -16,9 +16,17 @@ class Work
         $this->DB = DatabaseManager::getDM();
     }
 
-    public function getList()
+    public function getList($params = [])
     {
-        return $this->DB->excute('SELECT * FROM ' . $this->table);
+        $sql = "SELECT * FROM {$this->table}";
+        $data = [];
+
+        if (isset($params['keyword'])) {
+            $data['name'] = $data['starting_date'] = $data['ending_date'] = "%{$params['keyword']}%";
+            $sql .= " WHERE name like :name or starting_date like :starting_date or ending_date like :ending_date";
+        }
+
+        return $this->DB->excute($sql, $data);
     }
 
     public function create($data)
@@ -55,5 +63,20 @@ class Work
         ";
 
         return $this->DB->excute($sql, $data, false);
+    }
+
+    public static function getWorkStatusText($status)
+    {
+        switch ($status) {
+            case self::STATUS_PLANNING:
+                return 'Planning';
+            case self::STATUS_DOING:
+                return 'Doing';
+            case self::STATUS_COMPLETE:
+                return 'Complete';
+
+            default:
+                return null;
+        }
     }
 }
