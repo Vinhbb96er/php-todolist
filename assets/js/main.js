@@ -1,9 +1,37 @@
 $(document).ready(function () {
+    initDatetimepicker();
+
+    addValidate();
+
+    $(document).on('click', '.btn-delete', function (e) {
+        e.preventDefault();
+
+        if (confirm('Are you sure want to delete work?')) {
+            $(this).closest('.form-delete').submit();
+        }
+    });
+
+    $(document).on('click', '.btn-edit', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: 'index.php?a=edit',
+            method: 'POST',
+            data: {
+                id: $(this).data('work')
+            }
+        }).done(function (res) {
+            $('#edit-modal .modal-body').html(res);
+            initDatetimepicker();
+        });
+    });
+});
+
+function initDatetimepicker() {
     $('.datetime-picker').datetimepicker({
         format: 'YYYY-MM-D'
     });
-    addValidate();
-});
+}
 
 function addValidate() {
     $('.form-user').validate({

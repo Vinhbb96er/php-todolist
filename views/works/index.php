@@ -44,12 +44,15 @@
                         </label>
                     </th>
                     <td class="text-center">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary btn-edit" data-toggle="modal" data-target="#edit-modal" data-work="<?php echo $work['id'] ?>">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </button>
+                        <form action="index.php?a=delete" method="POST" class="form-delete">
+                            <input type="hidden" name="id" value="<?php echo $work['id'] ?>">
+                            <button class="btn btn-danger btn-delete">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             <?php } ?>
@@ -60,6 +63,27 @@
             <?php } ?>
         </tbody>
     </table>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit work</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" class="form-user" action="index.php?a=update">
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <?php require_once('views/works/create.php') ?>
