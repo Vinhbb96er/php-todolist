@@ -98,4 +98,17 @@ class Work
                 return null;
         }
     }
+
+    public function getCalendarData()
+    {
+        $sql = "
+            SELECT
+                name as title,
+                starting_date as start,
+                ending_date as end
+            FROM {$this->table}
+        ";
+
+        return $this->DB->excute($sql);
+    }
 }

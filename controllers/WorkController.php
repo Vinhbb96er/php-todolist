@@ -113,4 +113,23 @@ class WorkController
             header('Location:index.php');
         }
     }
+
+    public function calendarView()
+    {
+        try {
+            require_once('views/works/calendar.php');
+        } catch (Exception $e) {
+            header('Location:views/errors/404.php');
+        }
+    }
+
+    public function getCalendarData()
+    {
+        try {
+            $works = $this->work->getCalendarData();
+            echo json_encode($works);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
