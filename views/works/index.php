@@ -4,8 +4,13 @@
 <br>
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <?php require_once('views/partials/message.php') ?>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-info"><i class="fa fa-plus"></i> Create</button>
+            <button class="btn btn-info" data-toggle="modal" data-target="#create-modal"><i class="fa fa-plus"></i> Create</button>
         </div>
         <div class="col-md-6 text-right">
             <form class="form-search" method="GET" action="index.php?a=index">
@@ -56,4 +61,7 @@
         </tbody>
     </table>
 </div>
+
+<?php require_once('views/works/create.php') ?>
+
 <?php require_once('views/partials/footer.php') ?>
