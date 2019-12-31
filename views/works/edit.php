@@ -8,7 +8,7 @@
     <label for="starting_date">Starting date</label>
     <div class="form-group">
         <div class="input-group date datetime-picker col-md-6">
-            <input type="text" class="form-control datetime-picker" name="starting_date" value="<?php echo $work['starting_date'] ?>"/>
+            <input type="text" class="form-control datetime-picker start-date" name="starting_date" value="<?php echo $work['starting_date'] ?>"/>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -20,7 +20,7 @@
     <label for="ending_date">Ending date</label>
     <div class="form-group">
         <div class="input-group date datetime-picker col-md-6">
-            <input type="text" class="form-control datetime-picker" name="ending_date" value="<?php echo $work['ending_date'] ?>"/>
+            <input type="text" class="form-control datetime-picker end-date" name="ending_date" value="<?php echo $work['ending_date'] ?>"/>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>

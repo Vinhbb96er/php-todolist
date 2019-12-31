@@ -11,6 +11,7 @@
     <div class="row">
         <div class="col-md-6">
             <button class="btn btn-info" data-toggle="modal" data-target="#create-modal"><i class="fa fa-plus"></i> Create</button>
+            <a href="index.php?a=calendarView" class="btn btn-warning"><i class="fa fa-eye"></i> Calendar View</a>
         </div>
         <div class="col-md-6 text-right">
             <form class="form-search" method="GET" action="index.php?a=index">
