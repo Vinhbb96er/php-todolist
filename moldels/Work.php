@@ -49,12 +49,12 @@ class Work
         $data['updated_at'] = date('Y-m-d H:i:s');
         $setValue = [];
 
-        foreach ($variable as $key => $value) {
+        foreach ($data as $key => $value) {
             $setValue [] = "{$key} = :{$key}";
         }
 
         $data['id'] = $id;
-        $setValue = implode(',', $setValue);
+        $setValue = implode(', ', $setValue);
 
         $sql = "
             UPDATE {$this->table}
@@ -63,6 +63,25 @@ class Work
         ";
 
         return $this->DB->excute($sql, $data, false);
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE id = :id";
+
+        return $this->DB->excute($sql, ['id' => $id], false);
+    }
+
+    public function getWork($id)
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE id = :id";
+        $work = $this->DB->excute($sql, ['id' => $id]);
+
+        if (!count($work)) {
+            throw new Exception("Work not found");
+        }
+
+        return $work[0];
     }
 
     public static function getWorkStatusText($status)

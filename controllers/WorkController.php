@@ -58,4 +58,59 @@ class WorkController
             header('Location:index.php');
         }
     }
+
+    public function delete()
+    {
+        try {
+            if (!isset($_POST['id'])) {
+                throw new Exception("Data Invalid");
+            }
+
+            $works = $this->work->delete($_POST['id']);
+            $this->session->set('success', 'Delete Work Success!');
+
+            header('Location:index.php');
+        } catch (Exception $e) {
+            $this->session->set('error', 'Delete Work Failed!');
+            header('Location:index.php');
+        }
+    }
+
+    public function edit()
+    {
+        try {
+            if (!isset($_POST['id'])) {
+                throw new Exception("Data Invalid");
+            }
+
+            $work = $this->work->getWork($_POST['id']);
+
+            require_once('views/works/edit.php');
+        } catch (Exception $e) {
+            echo 'Get work detail failed!';
+        }
+    }
+
+    public function update()
+    {
+        try {
+            if (!isset($_POST['id']) || !isset($_POST['name']) || !isset($_POST['name']) || !isset($_POST['name'])) {
+                throw new Exception("Data Invalid");
+            }
+
+            $data = [
+                'name' => $_POST['name'],
+                'starting_date' => $_POST['starting_date'],
+                'ending_date' => $_POST['ending_date'],
+            ];
+
+            $work = $this->work->update($_POST['id'], $data);
+            $this->session->set('success', 'Update Work Success!');
+
+            header('Location:index.php');
+        } catch (Exception $e) {
+            $this->session->set('error', 'Update Work Failed!');
+            header('Location:index.php');
+        }
+    }
 }
