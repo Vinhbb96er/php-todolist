@@ -50,10 +50,14 @@ class DatabaseManager
 
     public function excute($sql, $params = [], $isGet = true)
     {
-        $this->connect();
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute($params);
+        try {
+            $this->connect();
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($params);
 
-        return $isGet ? $stmt->fetchAll() : $stmt->rowCount();
+            return $isGet ? $stmt->fetchAll() : $stmt->rowCount();
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }

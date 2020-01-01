@@ -78,7 +78,7 @@ class Work
         $work = $this->DB->excute($sql, ['id' => $id]);
 
         if (!count($work)) {
-            throw new Exception("Work not found");
+            return false;
         }
 
         return $work[0];
