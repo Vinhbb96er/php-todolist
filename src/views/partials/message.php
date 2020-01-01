@@ -1,5 +1,5 @@
 <?php
-    require_once('commons/session.php');
+    require_once('src/commons/session.php');
     $session = new SessionManager;
 ?>
 <div class="message-block">

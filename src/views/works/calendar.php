@@ -1,11 +1,11 @@
-<?php require_once('views/partials/header.php') ?>
+<?php require_once('src/views/partials/header.php') ?>
 <br>
 <h2 class="text-center">Calendar works</h2>
 <br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <?php require_once('views/partials/message.php') ?>
+            <?php require_once('src/views/partials/message.php') ?>
         </div>
     </div>
     <div class="row">
@@ -40,6 +40,6 @@
     </div>
 </div>
 
-<?php require_once('views/works/create.php') ?>
+<?php require_once('src/views/works/create.php') ?>
 
-<?php require_once('views/partials/footer.php') ?>
+<?php require_once('src/views/partials/footer.php') ?>
