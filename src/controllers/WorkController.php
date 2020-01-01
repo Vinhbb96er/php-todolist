@@ -1,7 +1,7 @@
 <?php
 
-require_once('moldels/Work.php');
-require_once('commons/session.php');
+require_once('src/moldels/Work.php');
+require_once('src/commons/session.php');
 
 class WorkController
 {
@@ -15,7 +15,7 @@ class WorkController
             $this->session = new SessionManager;
             $this->$action();
         } else {
-            header('Location:views/errors/404.php');
+            header('Location:src/views/errors/404.php');
         }
     }
 
@@ -30,9 +30,9 @@ class WorkController
 
             $works = $this->work->getList($params);
 
-            require_once('views/works/index.php');
+            require_once('src/views/works/index.php');
         } catch (Exception $e) {
-            header('Location:views/errors/404.php');
+            header('Location:src/views/errors/404.php');
         }
     }
 
@@ -85,7 +85,7 @@ class WorkController
 
             $work = $this->work->getWork($_POST['id']);
 
-            require_once('views/works/edit.php');
+            require_once('src/views/works/edit.php');
         } catch (Exception $e) {
             echo 'Get work detail failed!';
         }
@@ -117,9 +117,9 @@ class WorkController
     public function calendarView()
     {
         try {
-            require_once('views/works/calendar.php');
+            require_once('src/views/works/calendar.php');
         } catch (Exception $e) {
-            header('Location:views/errors/404.php');
+            header('Location:src/views/errors/404.php');
         }
     }
 

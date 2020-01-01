@@ -1,6 +1,6 @@
 <?php
 
-require_once('commons/database.php');
+require_once('src/commons/database.php');
 
 class Work
 {
